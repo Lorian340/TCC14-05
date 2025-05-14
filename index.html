@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Classe A</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Cores*/
+        body {
+            font-family: Arial, sans-serif;
+            padding-top: 76px;
+        }
+
+        /*Barra de pesquisa*/
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .navbar-brand span {
+            color: #dc3545;
+        }
+
+        /*promoção*/
+        .promo-bar {
+            background-color: #212529;
+            color: white;
+            padding: 10px 0;
+        }
+
+        /* navbar de promoção */
+        .promo {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .promo-badge {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        /* carousel do site*/
+        .carousel-inner img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* titulo site*/
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* cards dos tenis */
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .price {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .buy-button {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /*categorias*/
+        .category-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .category-link {
+            display: block;
+            padding: 8px 0;
+            color: #212529;
+            text-decoration: none;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .category-link:hover {
+            color: #dc3545;
+        }
+
+        /*footer*/
+        .footer {
+            background-color: #212529;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer h5 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /*badges*/
+        .new-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .hot-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        /* barra de pesquisa margem */
+        .nav-tabs {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #dc3545;
+        }
+
+        .nav-tabs .nav-link {
+            color: #212529;
+            border: none;
+            font-weight: 500;
+            padding: 10px 20px;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #dc3545;
+            background-color: transparent;
+            border-bottom: 2px solid #dc3545;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border-color: transparent;
+            color: #dc3545;
+        }
+
+        .tab-content {
+            padding-top: 20px;
+        }
+
+        .exclusive-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #6f42c1;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="index.js"></script>
+    <!--Navbar principal-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">Classe <span>A</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nike">Nike</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#corteiz">Corteiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#adidas">Adidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#puma">Puma</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Buscar produtos...">
+                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!--Barra de promoção-->
+    <div class="promo-bar text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <small><i class="fas fa-truck me-2"></i> Frete grátis acima de R$200</small>
+                </div>
+                <div class="col-md-4">
+                    <small><i class="fas fa-credit-card me-2"></i> Até 10x sem juros</small>
+                </div>
+                <div class="col-md-4">
+                    <small><i class="fas fa-percent me-2"></i> 5% de desconto no PIX</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <!--Promoções-->
+        <div class="promo">
+            <h2>Estilo Exclusivo, Preço Acessível!</h2>
+            <p>Utilize o cupom <span class="promo-badge">CLASSEA10</span> na sua primeira compra e ganhe 10% de desconto.</p>
+            <p>Ou 5% de desconto em qualquer compra no Pix.</p>
+        </div>
+
+        <!--Carousel(terminar)-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://www.storerabello.com.br/cdn/shop/files/ba90d7952980b35cc6067900b1a81221_800x.jpg?v=1711510293" class="d-block w-100" alt="Imagem 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.storerabello.com.br/cdn/shop/files/ba90d7952980b35cc6067900b1a81221_800x.jpg?v=1711510293" class="d-block w-100" alt="Imagem 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.storerabello.com.br/cdn/shop/files/ba90d7952980b35cc6067900b1a81221_800x.jpg?v=1711510293" class="d-block w-100" alt="Imagem 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!--Organização de coleção-->
+        <h2 class="section-title">NOSSA COLEÇÃO</h2>
+        
+        <div class="row">
+            <!--Todas as categorias(coluna lateral) -->
+            <div class="col-lg-3">
+                <div class="category-section">
+                    <h4 class="category-title">Marcas</h4>
+                    <a href="#nike" class="category-link">Nike</a>
+                    <a href="#corteiz" class="category-link">Corteiz</a>
+                    <a href="#adidas" class="category-link">Adidas</a>
+                    <a href="#puma" class="category-link">Puma</a>
+                </div>
+                
+                <div class="category-section">
+                    <h4 class="category-title">Categorias</h4>
+                    <a href="#tenis" class="category-link">Tênis</a>
+                    <a href="#jaquetas" class="category-link">Jaquetas</a>
+                    <a href="#moletons" class="category-link">Moletons</a>
+                    <a href="#calcas" class="category-link">Calças</a>
+                    <a href="#acessorios" class="category-link">Acessórios</a>
+                </div>
+                
+                <div class="category-section">
+                    <h4 class="category-title">Informações</h4>
+                    <a href="#" class="category-link">Sobre Nós</a>
+                    <a href="#" class="category-link">Política de Entrega</a>
+                    <a href="#" class="category-link">Trocas e Devoluções</a>
+                    <a href="#" class="category-link">Formas de Pagamento</a>
+                    <a href="#contato" class="category-link">Contato</a>
+                </div>
+            </div>
+            
+            <!--Produtos Nike(coluna principal) -->
+            <div class="col-lg-9">
+                <!-- Nike -->
+                <h3 class="section-title" id="nike">NIKE</h3>
+                
+                <!--Abas de navegação Nike-->
+                <ul class="nav nav-tabs" id="nikeTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="nike-tenis-tab" data-bs-toggle="tab" data-bs-target="#nike-tenis" type="button" role="tab" aria-controls="nike-tenis" aria-selected="true">Tênis</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nike-premium-tab" data-bs-toggle="tab" data-bs-target="#nike-premium" type="button" role="tab" aria-controls="nike-premium" aria-selected="false">Coleção Premium</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="nikeTabContent">
+                    <!--Aba Tênis Nike-->
+                    <div class="tab-pane fade show active" id="nike-tenis" role="tabpanel" aria-labelledby="nike-tenis-tab">
+                        <div class="row">
+                            <!-- Nike Air Force 1 Edição Especial-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://droper-lapse.us-southeast-1.linodeobjects.com/20250102132340743-839.webp" class="card-img-top" alt="Nike Air Force 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike Air Force 1 "Year of the Snake" 2025</h5>
+                                        <p class="price">R$649,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-warning text-dark me-1">Bege</span>
+                                            <span class="badge bg-danger">Edição Limitada</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--Tenis Nike P-6000-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://imgnike-a.akamaihd.net/1920x1920/00773554.jpg" class="card-img-top" alt="Nike P-6000">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike P-6000</h5>
+                                        <p class="price">R$549,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Cinza</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--Tenis Nike RNR-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="new-badge">NOVO</div>
+                                    <img src="https://imagedelivery.net/2DfovxNet9Syc-4xYpcsGg/7d02249d-8edc-46ba-c9a6-b1d9b4e6ed00/products" class="card-img-top" alt="Nike V5 RNR">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike V5 RNR</h5>
+                                        <p class="price">R$429,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark me-1">Preto</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--Jordan Low-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://static.flexdog.cz/flexdog-7/products/images/93d9fac9-d312-42bb-8885-7d3772032616.png?width=750&quality=40" class="card-img-top" alt="Jordan Spizike Low">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jordan Spizike Low</h5>
+                                        <p class="price">R$849,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Preto</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--Tenis Nike DunkLow Azul-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://images.tcdn.com.br/img/img_prod/1293626/nike_dunk_low_polar_blue_113_1_8049753c0de13ec65460aa9c7ebea57d.jpeg" class="card-img-top" alt="Nike Dunk Low">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike Dunk Low</h5>
+                                        <p class="price">R$599,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-primary me-1">Azul</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--Tenis Nike Pegasus-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a3e7dead-1ad2-4c40-996d-93ebc9df0fca/pegasus-40-road-running-shoes-ztffWR.png" class="card-img-top" alt="Nike Pegasus">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike Pegasus 40</h5>
+                                        <p class="price">R$699,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-success me-1">Verde</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--Coleção Premium da Nike-->
+                    <div class="tab-pane fade" id="nike-premium" role="tabpanel" aria-labelledby="nike-premium-tab">
+                        <div class="row">
+                            <!-- Tech Fleece -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://droper-lapse.us-southeast-1.linodeobjects.com/20250409192620826-241.webp" class="card-img-top" alt="Nike Tech Fleece">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike Tech Fleece Windrunner</h5>
+                                        <p class="price">R$899,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Preto</span>
+                                            <span class="badge bg-light text-dark">Jaqueta</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Camisa seleçao francesa-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="new-badge">NOVO</div>
+                                    <img src="https://acdn-us.mitiendanube.com/stores/001/055/309/products/camisa-franca-nike-2024-2025-home-1-casa-titular-azul-torcedor-masculina-original-oficial-qualidade-confiavel-homem-1-f9069f4f73eb87982617099018737395-480-0.jpg" class="card-img-top" alt="Camisa França">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa França 2025 Home</h5>
+                                        <p class="price">R$449,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-primary me-1">Azul</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Corta vento nike ACG-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://cdn.afew-store.com/assets/38/385646/2400/nike-w-acg-sfadv-chn-of-crts-jkt-faded-spruce-gridiron-summit-white-db8149-309-apparel%20%3E%20jackets-packshots-0.jpg" class="card-img-top" alt="Nike ACG">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike ACG Storm-FIT ADV Alpine</h5>
+                                        <p class="price">R$1.299,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-primary me-1">Azul</span>
+                                            <span class="badge bg-light text-dark">Jaqueta</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Moletom Nike Sportswear Club -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://www.romapy.com/wp-content/uploads/2024/05/bv2648-063-phsfh001.jpg" class="card-img-top" alt="Nike Sportswear">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike Sportswear Club Moletom</h5>
+                                        <p class="price">R$349,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Cinza</span>
+                                            <span class="badge bg-light text-dark">Moletom</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Nike Regata Dri-FIT  -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="exclusive-badge">EXCLUSIVO</div>
+                                    <img src="https://cdnv2.moovin.com.br/atitudeesportes/imagens/produtos/det/regata-nike-dri-fit-miler-tank-1d83df2f3a1b2d99a6c89bcd5312d374.jpeg" class="card-img-top" alt="Nike Dri-FIT">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Regata Nike Dri-FIT Miler Tank Preto</h5>
+                                        <p class="price">R$149,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-dark me-1">Preta</span>
+                                            <span class="badge bg-light text-dark">Regata</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Nike Chuteira Zoom Mercurial -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://imgnike-a.akamaihd.net/1920x1920/0225950U.jpg" class="card-img-top" alt="Nike Zoom Mercurial">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nike Zoom Mercurial Vapor 15</h5>
+                                        <p class="price">R$1.499,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-warning text-dark me-1">Dourado</span>
+                                            <span class="badge bg-light text-dark">Chuteira</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Corteiz -->
+                <h3 class="section-title" id="corteiz">CORTEIZ</h3>
+                <div class="row">
+                    <!-- Corteiz Bobojaco -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="hot-badge">HOT</div>
+                            <img src="https://images.stockx.com/images/Corteiz-Bolo-Jacket-Black-Product-1.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358" class="card-img-top" alt="Corteiz Bolo Jacket">
+                            <div class="card-body">
+                                <h5 class="card-title">Corteiz Bolo Jacket Black</h5>
+                                <p class="price">R$899,99</p>
+                                <div class="mb-2">
+                                    <span class="badge bg-secondary me-1">Preto</span>
+                                    <span class="badge bg-light text-dark">Jaqueta</span>
+                                </div>
+                                <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corteiz regata -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="new-badge">NOVO</div>
+                            <img src="https://droper-media.us-southeast-1.linodeobjects.com/2752024122819727.webp" class="card-img-top" alt="Corteiz Guerillaz Tank Top">
+                            <div class="card-body">
+                                <h5 class="card-title">Corteiz Guerillaz Tank Top</h5>
+                                <p class="price">R$299,99</p>
+                                <div class="mb-2">
+                                    <span class="badge bg-warning me-1">Bege</span>
+                                    <span class="badge bg-light text-dark">Regata</span>
+                                </div>
+                                <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corteiz Moletom Canguru -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lmol6ouejnjqba" class="card-img-top" alt="Corteiz Moletom Canguru">
+                            <div class="card-body">
+                                <h5 class="card-title">Corteiz Moletom Canguru RTW</h5>
+                                <p class="price">R$499,99</p>
+                                <div class="mb-2">
+                                    <span class="badge bg-secondary me-1">Preto</span>
+                                    <span class="badge bg-light text-dark">Moletom</span>
+                                </div>
+                                <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corteiz Shorts -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://down-br.img.susercontent.com/file/sg-11134201-7ra2w-m4m56ux3j5v87b" class="card-img-top" alt="Corteiz Devil Island Shorts">
+                            <div class="card-body">
+                                <h5 class="card-title">Corteiz Devil Island Shorts</h5>
+                                <p class="price">R$399,99</p>
+                                <div class="mb-2">
+                                    <span class="badge bg-secondary me-1">Preto</span>
+                                    <span class="badge bg-light text-dark">Shorts</span>
+                                </div>
+                                <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corteiz Veludo -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="hot-badge">HOT</div>
+                            <img src="https://macanstory.com/cdn/shop/files/Photoproduit_15.jpg?v=1700755265&width=1000" class="card-img-top" alt="Corteiz Velour VVS">
+                            <div class="card-body">
+                                <h5 class="card-title">Corteiz Allstarz Velour VVS</h5>
+                                <p class="price">R$799,99</p>
+                                <div class="mb-2">
+                                    <span class="badge bg-success me-1">Verde</span>
+                                    <span class="badge bg-light text-dark">Jaqueta</span>
+                                </div>
+                                <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tenis da Corteiz e Nike Air Max 95 -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="hot-badge">EXCLUSIVO</div>
+                            <img src="https://droper-media.us-southeast-1.linodeobjects.com/312024194714426.webp" class="card-img-top" alt="Corteiz x Nike Air Max 95">
+                            <div class="card-body">
+                                <h5 class="card-title">Corteiz x Nike Air Max 95 SP</h5>
+                                <p class="price">R$1.299,99</p>
+                                <div class="mb-2">
+                                    <span class="badge bg-info me-1">Azul</span>
+                                    <span class="badge bg-danger">Colaboração</span>
+                                </div>
+                                <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Adidas -->
+                <h3 class="section-title" id="adidas">ADIDAS</h3>
+                
+                <!-- Abas de navegação Adidas -->
+                <ul class="nav nav-tabs" id="adidasTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="adidas-tenis-tab" data-bs-toggle="tab" data-bs-target="#adidas-tenis" type="button" role="tab" aria-controls="adidas-tenis" aria-selected="true">Tênis</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="adidas-premium-tab" data-bs-toggle="tab" data-bs-target="#adidas-premium" type="button" role="tab" aria-controls="adidas-premium" aria-selected="false">Coleção Premium</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="adidasTabContent">
+                    <!-- Aba Tenis Adidas -->
+                    <div class="tab-pane fade show active" id="adidas-tenis" role="tabpanel" aria-labelledby="adidas-tenis-tab">
+                        <div class="row">
+                            <!-- Tenis Adidas Samba og -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/22a8fc2d0dcf44dc81f418185fd11ec6_9366/Tenis_Samba_OG_Branco_JK3367_01_00_standard.jpg" class="card-img-top" alt="Adidas Samba">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Adidas Samba OG</h5>
+                                        <p class="price">R$599,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark me-1">Branco</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Camisa do Real Madrid Adidas -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="new-badge">NOVO</div>
+                                    <img src="https://lojablackhype.com/cdn/shop/files/734914C3-6E82-49C0-9F45-27F9D7364D53_1024x.jpg?v=1740033225" class="card-img-top" alt="Camisa Real Madrid">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Real Madrid 25/26 Home</h5>
+                                        <p class="price">R$369,90</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark me-1">Branco</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Adidas Camisa do Colo Colo -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="exclusive-badge">EXCLUSIVO</div>
+                                    <img src="https://acdn-us.mitiendanube.com/stores/001/055/309/products/camisa-colo-colo-adidas-2024-2025-home-1-casa-titular-branca-torcedor-masculina-original-oficial-qualidade-confiavel-homem-lancamento-2-4f36112002cf74a44f17098335349284-1024-1024.jpg" class="card-img-top" alt="Camisa Colo Colo">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Colo Colo Home 2025</h5>
+                                        <p class="price">R$349,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark me-1">Branco</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tenis Adidas Gazelle -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/73f2b1c3e16f423fa300baed88e28b87_9366/Tenis_Gazelle_Indoor_Preto_JI2060_01_standard.jpg" class="card-img-top" alt="Adidas Gazelle">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Adidas Gazelle</h5>
+                                        <p class="price">R$549,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-dark me-1">Preto</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Adidas Camisa Internacional -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://acdn-us.mitiendanube.com/stores/001/402/723/products/94037485fe-3b037c9fd936cb2d5e17425000602418-1024-1024.jpg" class="card-img-top" alt="Camisa Inter">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Inter 25/26 Home</h5>
+                                        <p class="price">R$379,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-primary me-1">Azul</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Adidas Spezial (handebol) -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f8a8e692966748f4a493eb756649ff87_9366/Tenis_Handebol_Spezial_Verde_IG6192_01_standard.jpg" class="card-img-top" alt="Adidas Spezial">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Adidas Handball Spezial</h5>
+                                        <p class="price">R$579,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-success me-1">Verde</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Adidas Coleção Premium  -->
+                    <div class="tab-pane fade" id="adidas-premium" role="tabpanel" aria-labelledby="adidas-premium-tab">
+                        <div class="row">
+                            <!-- Jaqueta Adidas Internacional  -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="new-badge">NOVO</div>
+                                    <img src="https://static.lojadointer.com.br/produtos/moletom-internacional-2526-treino-adidas-masculino/06/FBA-3654-006/FBA-3654-006_zoom1.jpg?ts=1733842034&ims=326x" class="card-img-top" alt="Jaqueta Internacional">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jaqueta Internacional 25/26</h5>
+                                        <p class="price">R$499,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Preto</span>
+                                            <span class="badge bg-light text-dark">Jaqueta</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Jaqueta Adidas Cruzeiro  -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://static.cruzeiro.com.br/produtos/jaqueta-cruzeiro-2526-apresentacao-adidas-masculina/24/FBA-3645-424/FBA-3645-424_zoom1.jpg?ts=1733843968&ims=544x" class="card-img-top" alt="Jaqueta Cruzeiro">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jaqueta Cruzeiro 25/26</h5>
+                                        <p class="price">R$499,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-info me-1">Azul</span>
+                                            <span class="badge bg-light text-dark">Jaqueta</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Jaqueta Adidas Roma  -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="exclusive-badge">EXCLUSIVO</div>
+                                    <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/6c4efedfa5cc4b3bab5dacfa948fa06f_9366/Jaqueta_AS_Roma_Bring_Back_1993_Azul_IT3878_HM30.jpg" class="card-img-top" alt="Jaqueta Roma">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jaqueta Roma Bring Back 1993</h5>
+                                        <p class="price">R$699,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-danger me-1">Vermelho</span>
+                                            <span class="badge bg-light text-dark">Jaqueta</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Camisa Adidas Flamengo  -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/7b8b4209519f4404b3a24e044b77cdd0_9366/Camisa_Pre_Jogo_Flamengo_25-26_Vermelho_IW8760_01_laydown.jpg" class="card-img-top" alt="Camisa Flamengo">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Flamengo 25/26 Pré-Jogo</h5>
+                                        <p class="price">R$299,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-danger me-1">Vermelho</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Moletom Adidas Originals  -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://cdn.dooca.store/878/products/lsossetalrkqfeuoksxualonnonyodgxbcd2.jpg?v=1644356493" class="card-img-top" alt="Moletom Adidas">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Moletom Originals Trefoil</h5>
+                                        <p class="price">R$349,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Cinza</span>
+                                            <span class="badge bg-light text-dark">Moletom</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Jaqueta Adidas Terrex  -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="new-badge">NOVO</div>
+                                    <img src="https://www.tradeinn.com/f/13898/138985351_3/adidas-casaco-terrex-ct-myshelter-rain.rdy.webp" class="card-img-top" alt="Jaqueta Terrex">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jaqueta Terrex MYSHELTER Rain</h5>
+                                        <p class="price">R$899,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-success me-1">Verde</span>
+                                            <span class="badge bg-light text-dark">Jaqueta</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Puma -->
+                <h3 class="section-title" id="puma">PUMA</h3>
+                
+                <!-- Abas de navegação Puma -->
+                <ul class="nav nav-tabs" id="pumaTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="puma-tenis-tab" data-bs-toggle="tab" data-bs-target="#puma-tenis" type="button" role="tab" aria-controls="puma-tenis" aria-selected="true">Tênis</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="puma-premium-tab" data-bs-toggle="tab" data-bs-target="#puma-premium" type="button" role="tab" aria-controls="puma-premium" aria-selected="false">Coleção Premium</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="pumaTabContent">
+                    <!-- Aba de Tênis Puma -->
+                    <div class="tab-pane fade show active" id="puma-tenis" role="tabpanel" aria-labelledby="puma-tenis-tab">
+                        <div class="row">
+                            <!-- Camisa do palmeiras -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1350,h_1350/global/782426/01/fnd/BRA/fmt/png/Camisa-Palmeiras-HOME-Torcedor-2025" class="card-img-top" alt="Camisa Palmeiras">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Palmeiras HOME 2025</h5>
+                                        <p class="price">R$349,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-success me-1">Verde</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Camisa de senegal -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="new-badge">NOVO</div>
+                                    <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1350,h_1350/global/777161/01/mod01/fnd/BRA/fmt/png/Camisa-Senegal-2025-Home-Masculina" class="card-img-top" alt="Camisa Senegal">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Senegal 2025 Home</h5>
+                                        <p class="price">R$449,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark me-1">Branco</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Camisa do bragantino -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="exclusive-badge">EXCLUSIVO</div>
+                                    <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/690579/01/fnd/BRA/w/1000/h/1000/fmt/png" class="card-img-top" alt="Camisa Red Bull Bragantino">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Red Bull Bragantino 2025</h5>
+                                        <p class="price">R$329,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark me-1">Branco</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tenis puma 180 da colab-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://images.puma.net/images/402101/32/sv01/fnd/BRA/" class="card-img-top" alt="Puma 180">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Puma 180 Bege</h5>
+                                        <p class="price">R$699,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-warning me-1">Bege</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tenis Puma TRC Blaze -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://imgcentauro-a.akamaihd.net/1300x1300/M12ZW402A5.jpg" class="card-img-top" alt="Puma TRC Blaze">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Puma TRC Blaze</h5>
+                                        <p class="price">R$649,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Preto</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tenis puma Slipstream -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">EXCLUSIVO</div>
+                                    <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/391764/02/sv01/fnd/BRA/w/1000/h/1000/fmt/png" class="card-img-top" alt="Puma Slipstream">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Puma Slipstream</h5>
+                                        <p class="price">R$699,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark me-1">Branco</span>
+                                            <span class="badge bg-light text-dark">Tênis</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Coleçao premium puma-->
+                    <div class="tab-pane fade" id="puma-premium" role="tabpanel" aria-labelledby="puma-premium-tab">
+                        <div class="row">
+                            <!-- Corta vento palmeiras -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="data:image/jpeg;base64,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" class="card-img-top" alt="Jaqueta Palmeiras">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jaqueta Corta Vento Palmeiras 2025</h5>
+                                        <p class="price">R$329,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-success me-1">Verde</span>
+                                            <span class="badge bg-light text-dark">Jaqueta</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- camisa do Milan -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://acdn-us.mitiendanube.com/stores/001/055/309/products/camisa-titular-do-milan-puma-2024-2025-home-1-casa-vermelha-preta-manga-cumprida-jogador-masculina-homem-profissional-original-oficial-comprar-loja-online-frete-gratis-34e4a2f387fdee441e17386071462389-1024-1024.jpg" class="card-img-top" alt="Camisa Milan">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Milan Home 2025 Manga Longa</h5>
+                                        <p class="price">R$399,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-danger me-1">Vermelho</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- camisa do manchester -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="exclusive-badge">EXCLUSIVO</div>
+                                    <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/775075/01/fnd/BRA/w/1000/h/1000/fmt/png" class="card-img-top" alt="Camisa man city">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Manchester City Home 2025</h5>
+                                        <p class="price">R$349,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-primary me-1">Azul</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- camisa de jogo borussia -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="new-badge">NOVO</div>
+                                    <img src="data:image/jpeg;base64,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" class="card-img-top" alt="Camisa borussia">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Camisa Borussia Dortmund Home 2025</h5>
+                                        <p class="price">R$349,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-warning me-1">Amarelo</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- camisa de jogo olympique de maiseille-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://acdn-us.mitiendanube.com/stores/002/101/082/products/pixelcut-export-39-0a82e2634069397ee117220286488695-1024-1024.png" class="card-img-top" alt="Camisa Olympique">
+                                    <div class="card-body">
+                                        <h5 class="card-title"> Camisa Olympique de Marseille Home 2025</h5>
+                                        <p class="price">R$349,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-primary text-dark me-1">Azul</span>
+                                            <span class="badge bg-light text-dark">Camisa</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--moletom classics -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="hot-badge">HOT</div>
+                                    <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/530074/01/fnd/BRA/w/1000/h/1000/fmt/png" class="card-img-top" alt="Moletom Puma">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Moletom Puma Classics Logo</h5>
+                                        <p class="price">R$399,99</p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1">Preto</span>
+                                            <span class="badge bg-light text-dark">Moletom</span>
+                                        </div>
+                                        <a href="#" class="btn btn-dark buy-button">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- paginação(descrição) -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Próxima</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- contato (descrição) -->
+    <div class="container mt-5" id="contato">
+        <h2 class="section-title">CONTATO</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="assunto" class="form-label">Assunto</label>
+                        <input type="text" class="form-control" id="assunto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensagem" class="form-label">Mensagem</label>
+                        <textarea class="form-control" id="mensagem" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Enviar Mensagem</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h4>Informações de Contato</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> Rua Exemplo, 123 - São Paulo, SP</p>
+                <p><i class="fas fa-phone me-2"></i> (11) 1234-5678</p>
+                <p><i class="fas fa-envelope me-2"></i> contato@classea.com.br</p>
+                <p><i class="fas fa-clock me-2"></i> Segunda a Sexta: 9h às 18h | Sábado: 9h às 13h</p>
+                
+                <h4 class="mt-4">Redes Sociais</h4>
+                <div class="mt-3">
+                    <a href="#" class="text-dark me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="text-dark me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-dark me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#" class="text-dark me-3"><i class="fab fa-tiktok fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer da descrição -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5>Classe A</h5>
+                    <p>Sua loja de moda exclusiva com as melhores tendências e preços acessíveis.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Links Rápidos</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#nike">Nike</a></li>
+                        <li><a href="#corteiz">Corteiz</a></li>
+                        <li><a href="#adidas">Adidas</a></li>
+                        <li><a href="#puma">Puma</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Atendimento</h5>
+                    <ul>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos e Condições</a></li>
+                        <li><a href="#">Política de Trocas</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Receba nossas novidades e promoções exclusivas.</p>
+                    <div class="input-group mt-3">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <button class="btn btn-danger">Inscrever</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Classe A. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
